@@ -26,9 +26,60 @@ public:
 	Integer();
 	Integer(int value);
 	Integer(const Integer& other);
-	Integer operator=(const Integer& other);
-	Integer operator+(int value);
+	Integer& operator=(const Integer& other);
+
+	Integer operator+(Integer other);
+	Integer operator-(Integer other);
+	Integer operator*(Integer other);
+	Integer operator/(Integer other);
+	Integer operator^(Integer other);
+
+	bool operator>(const Integer& other);
+	bool operator<(const Integer& other);
+	bool operator==(const Integer& other);
+
+	inline bool operator>=(const Integer& other)
+	{
+		return !(*this < other);
+	}
+
+	inline bool operator<=(const Integer& other)
+	{
+		return !(*this > other);
+	}
+
+	inline bool operator!=(const Integer& other)
+	{
+		return !(*this == other);
+	}
+
 	operator int();
 	friend std::ostream& operator <<(std::ostream& os, const Integer& i);
 	friend std::istream& operator >>(std::istream& is, Integer& i);
+
+	inline Integer& operator+=(const Integer& other)
+	{
+		return *this = *this + other;
+	}
+
+	inline Integer& operator-=(const Integer& other)
+	{
+		return *this = *this - other;
+	}
+
+	inline Integer& operator*=(const Integer& other)
+	{
+		return *this = *this * other;
+	}
+
+	inline Integer& operator/=(const Integer& other)
+	{
+		return *this = *this / other;
+	}
+
+	inline Integer& operator^=(const Integer& other)
+	{
+		return *this = *this ^ other;
+	}
+
 };

@@ -15,6 +15,7 @@
 // along with integer.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <integer.hpp>
+#include <cmath>
 
 Integer::Integer(){};
 
@@ -26,15 +27,51 @@ Integer::Integer(const Integer& other):
 	value(other.value)
 {};
 
-Integer Integer::operator=(const Integer& other)
+Integer& Integer::operator=(const Integer& other)
 {
 	this->value = other.value;
 	return *this;
 }
 
-Integer Integer::operator+(int value)
+Integer Integer::operator+(Integer other)
 {
-	return this->value + value;
+	return this->value + other.value;
+}
+
+Integer Integer::operator-(Integer other)
+{
+	return this->value - other.value;
+}
+
+
+Integer Integer::operator*(Integer other)
+{
+	return this->value * other.value;
+}
+
+Integer Integer::operator/(Integer other)
+{
+	return this->value / other.value;
+}
+
+Integer Integer::operator^(Integer other)
+{
+	return std::pow(this->value,other.value);
+}
+
+bool Integer::operator>(const Integer& other)
+{
+	return this->value > other.value;
+}
+
+bool Integer::operator<(const Integer& other)
+{
+	return this->value < other.value;
+}
+
+bool Integer::operator==(const Integer& other)
+{
+	return this->value == other.value;
 }
 
 Integer::operator int()
