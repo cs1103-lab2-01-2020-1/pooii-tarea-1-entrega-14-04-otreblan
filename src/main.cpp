@@ -15,6 +15,7 @@
 // along with integer.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <integer.hpp>
+#include <number.hpp>
 
 int main()
 {
