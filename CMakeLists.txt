@@ -21,9 +21,9 @@ include(GNUInstallDirs)
 
 # El nombre del proyecto
 project(integer
-	VERSION 0.0.0
+	VERSION 1.0.0
 	DESCRIPTION "Entero"
-	HOMEPAGE_URL "https://github.com/utec-computer-science/cs1103-integer-otreblan"
+	HOMEPAGE_URL "https://github.com/cs1103-lab2-01-2020-1/pooii-tarea-1-entrega-14-04-otreblan"
 	LANGUAGES "CXX"
 )
 
