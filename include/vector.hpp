@@ -14,42 +14,54 @@
 // You should have received a copy of the GNU General Public License
 // along with integer.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <integer.hpp>
-#include <number.hpp>
-#include <vector.hpp>
+#pragma once
 
-int main()
+#include <cstdlib>
+#include <iostream>
+
+namespace utec
 {
 
-	utec::vector vec;
-	vec.push_back(1);
-	vec.push_back(1);
-	vec.push_back(1);
-	vec.push_back(1);
+class vector
+{
+private:
+	int* data;
 
-	utec::vector vec2;
-	vec.push_back(2);
-	vec.push_back(2);
-	vec.push_back(2);
-	vec.push_back(2);
+	size_t _size;
+	size_t _capacity;
+public:
+	vector();
+	vector(vector& other);
+	vector(size_t size);
 
-	utec::vector vec3(vec + vec2);
+	vector& operator=(vector& other);
 
-	vec3.pop_back();
-	for(size_t i = 0; i < 100; ++i)
+	~vector();
+
+	void push_back(int value);
+	void pop_back();
+
+	int* insert(size_t index, int value);
+	int* erase(size_t index);
+
+	vector operator+(vector& other);
+
+	inline size_t size()
 	{
-		vec3.insert(1, i);
+		return _size;
 	}
 
-	for(size_t i = 0; i < 10; ++i)
+	inline size_t capacity()
 	{
-		vec3.erase(1);
+		return _capacity;
 	}
 
-	for(size_t i = 0; i < vec3.size(); ++i)
+	inline int& operator[](size_t index)
 	{
-		std::cout << vec3[i] << '\n';
+		return data[index];
 	}
 
-	return 0;
-}
+	void reserve(size_t size);
+};
+
+};
